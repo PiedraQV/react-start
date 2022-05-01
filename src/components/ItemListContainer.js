@@ -16,15 +16,11 @@ const ItemListContainer = () => {
     };
     return(
         <div class="container inset-x-0 bottom-0 mx-auto px-8 py-6  buttom-0 left-0 right-0">
-            {
-            products.map( r =>(
-            <ItemList key ={r.id} producto={r}></ItemList>))}
+           <ItemList Item={products}/>
         </div>
     )
 
 };
-
-
 
 export default ItemListContainer;
  
