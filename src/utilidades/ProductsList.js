@@ -1,4 +1,4 @@
-export const Item = [
+const ProductsList = [
     {
         id: 1,
         modelo: 'Vans Yellow',
@@ -19,5 +19,7 @@ export const Item = [
         precio:130, 
         talla:39,
         pictureUrl:'https://http2.mlstatic.com/D_NQ_NP_745177-MLM32037822918_092019-O.jpg'
-    }
+    },
     ];
+
+export default ProductsList;
