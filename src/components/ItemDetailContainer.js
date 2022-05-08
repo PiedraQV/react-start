@@ -2,16 +2,19 @@ import React, { useEffect, useState}from 'react';
 import ProductsList from "../utilidades/ProductsList";
 import { useParams } from 'react-router-dom';
 import ItemDetail from './ItemDetail';
+import Loading from './Loading';
 
 const ItemDetailContainer = () =>{
 
     const {productId} = useParams()
     const [detalle, setDetalle] = useState({})
+    const [loading, setLoading] = useState(true);
     
     useEffect(() => {
         (async() => {
             const DetailList = await getDetailProduct()
             setDetalle(DetailList)
+            setLoading(false)
         })()
     },[])
 
@@ -26,7 +29,11 @@ const ItemDetailContainer = () =>{
     return(
         <div>
             <h1>Detalles del producto - {productId} </h1>
-            {<ItemDetail detalle={detalle}/>}
+            {
+                loading ?
+                <Loading></Loading>
+                :
+                <ItemDetail detalle={detalle}/>}
             </div>
     )
 }
