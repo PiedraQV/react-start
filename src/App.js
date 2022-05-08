@@ -1,15 +1,9 @@
 import './App.css';
-import Header from './components/Header';
-import ItemListContainer from './components/ItemListContainer';
-import NavBar from './components/NavBar';
+import AppRouter from './routes/AppRouter';
 
 function App() {
   return (
-    <div className="App">
-        <NavBar/>
-        <Header/>
-        <ItemListContainer/>
-    </div>
+    <AppRouter/>
   );
 }
 

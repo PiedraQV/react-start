@@ -20,7 +20,6 @@ const ItemListContainer = () => {
            {<ItemList products = {products} />}
         </div>
     )
-
 };
 
 export default ItemListContainer;
