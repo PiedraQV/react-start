@@ -10,12 +10,11 @@ const NavBar = ()=>{
             <span class="ml-3 text-xl">Fractal Store</span>
             </Link>
             <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
-            <Link to="Pages/ProductsPage" class="text-black font-semibold mr-5 hover:text-gray-900">Productos</Link>
-            <Link to="Pages/About" class="text-black font-semibold mr-5 hover:text-gray-900">About</Link>
-            <Link to="Pages/CartPage"><CartWidget></CartWidget></Link>
+            <Link to = {`/Pages/ProductsPage/${ 1 }`} class="text-black font-semibold mr-5 hover:text-gray-900">Nikes</Link>
+            <Link to = {`/Pages/ProductsPage/${ 0 }`} class="text-black font-semibold mr-5 hover:text-gray-900">Vans</Link>
+            <Link to = "Pages/About" class="text-black font-semibold mr-5 hover:text-gray-900">About</Link>
+            <Link to = "Pages/CartPage"><CartWidget/></Link>
             </nav>
-
-            
         </div>
         </header>
     )
