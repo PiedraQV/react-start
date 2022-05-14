@@ -5,10 +5,12 @@ import ProductPage from '../Pages/ProductsPage'
 import About from '../Pages/About'
 import CartPage from '../Pages/CartPage'
 import DetailPage from '../Pages/DetailPage';
+import CartContextProvider from '../components/CartContext'
 
-const AppRouter = () =>{
+function AppRouter (){
     return(
     <div className="App">
+        <CartContextProvider>
         <BrowserRouter>
         <NavBar/>
         <Routes>
@@ -19,6 +21,7 @@ const AppRouter = () =>{
             <Route path='/Pages/DetailPage/:productId' element={ <DetailPage/>}/>
         </Routes>
         </BrowserRouter>
+        </CartContextProvider>  
     </div>
     )
 }
