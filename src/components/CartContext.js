@@ -9,6 +9,7 @@ const CartContextProvider = ({ children }) => {
 
   function addToCart(producto, cantidad) {
     console.log({ producto, cantidad });
+    
     if (isInCart(producto.id)) {
       return setCart(
         cart.map((product) =>
@@ -34,14 +35,34 @@ const CartContextProvider = ({ children }) => {
     const deleteProduct = newCart.filter((prod)=>prod.id !== producto.id)
     setCart(deleteProduct)
 }
-const deleteProduct=()=>setCart ([0])
+const deleteProduct=()=>setCart ([0]);
+
+function totalPrice(){
+  let total = 0;
+  cart.forEach((element)=>{
+    total = total + element.precio * element.cantidad;
+  });
+  return total;
+  }
+
+  function totalProdcuts(){
+    let total = 0;
+    cart.forEach((element)=>{
+      total = total + element.cantidad;
+    });
+    return total;
+    }
 
   return (
     <CartContext.Provider
       value={{
+        cart,
         addToCart,
         deleteCart,
         deleteProduct,
+        totalPrice,
+        isInCart,
+        totalProdcuts,
       }}
     >
       {children}
