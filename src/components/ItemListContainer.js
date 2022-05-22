@@ -1,5 +1,5 @@
 import { useEffect, useState} from 'react';
-import ProductsList from '../utilidades/ProductsList'
+import getAllItems from '../utilidades/dataGetFirestore'
 import Loading from './Loading';
 import ItemList from './ItemList';
 import { useParams } from 'react-router-dom';
@@ -11,27 +11,13 @@ const ItemListContainer = () => {
     const [categorias, setCategorias] = useState({});
 
     useEffect(() => {
-        (async() => {
-            const categoriasList = await getCategories()
-            setCategorias(categoriasList)
+        getAllItems().then(data=>{
             setLoading(false)
-            setProducts(categoriasList)
-        })()
-    },[productCategorie])
-
-    const getItems = ( )=> {
-    return new Promise ((resolve, reject)=> {
-        setTimeout(()=> {resolve (ProductsList)
-        }, 2000);});
-    };
-
-    const getCategories = ( )=> {
-        if (!productCategorie) {
-            return getItems();
-          }
-          return ProductsList.filter((item) => item.categoria == productCategorie);
-     };
-     
+            setProducts(data)
+            setCategorias(productCategorie)
+        })
+    },[])
+      
     return(
         <div class="container inset-x-0 bottom-0 mx-auto px-8 py-6  buttom-0 left-0 right-0">
            {
@@ -39,6 +25,7 @@ const ItemListContainer = () => {
                <Loading></Loading>
                :
                <ItemList products = {products && categorias}/>}
+               {console.log(products, categorias)}
         </div>
     )
 };
