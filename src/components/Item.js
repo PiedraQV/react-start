@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
- const Item = ({producto}) =>{
+export const Item = ({producto}) =>{
     return (
      <div className='p-4 md:w-1/3'>
       <div className='h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden'>
@@ -11,5 +11,3 @@ import { Link } from "react-router-dom"
      </div>         
     )
 }
-
-export default Item;
