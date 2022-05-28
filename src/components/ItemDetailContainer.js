@@ -1,8 +1,8 @@
 import { useEffect, useState}from 'react';
-import ProductsList from "../utilidades/ProductsList";
 import { useParams } from 'react-router-dom';
 import ItemDetail from './ItemDetail';
 import Loading from './Loading';
+import { getDetailProduct} from '../utilidades/dataGetFirestore';
 
 const ItemDetailContainer = () =>{
 
@@ -12,19 +12,12 @@ const ItemDetailContainer = () =>{
     
     useEffect(() => {
         (async() => {
-            const DetailList = await getDetailProduct()
+            const DetailList = await getDetailProduct(productId)
             setDetalle(DetailList)
             setLoading(false)
         })()
     },[])
 
-    const getDetailProduct = () => {
-        return new Promise ((resolve) => {
-            setTimeout(() => {
-                resolve(ProductsList.find(r => r.id == productId))
-            },2000);
-        })
-    }
 
     return(
         <div>

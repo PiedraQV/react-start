@@ -23,5 +23,43 @@ export async function getAllItems() {
     const inventario = collection(firestoreDB, 'Merca');
     const fractaSt = await getDocs(inventario);
 
-    return fractaSt.docs.map(doc => doc.data());
+    return fractaSt.docs.map(doc =>{ return {...doc.data(), id: doc.id}});
+}
+
+
+//Categoría del producto
+
+export async function getAllItemsId(productCategorie) {
+
+  const inventario = collection(firestoreDB, 'Merca');
+  const queryStore = query(inventario, where("categoria", "==", productCategorie))
+  const fractaSt = await getDocs(queryStore)
+
+
+  return fractaSt.docs.map(doc =>{
+
+    return {
+      ...doc.data(),
+      id: doc.id
+    }
+  });
+}
+
+
+
+//Detalle del producto
+export async function getDetailProduct(id) {
+
+  const inventario = collection(firestoreDB, 'Merca');
+  const shoesRef = doc(inventario,id);
+  const fractaSt = await getDoc(shoesRef);
+
+
+  return{
+      ...fractaSt.data(),
+      id: fractaSt.id
+  }
+
+
+
 }
