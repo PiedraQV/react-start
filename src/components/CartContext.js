@@ -35,7 +35,14 @@ const CartContextProvider = ({ children }) => {
     const deleteProduct = newCart.filter((prod)=>prod.id !== producto.id)
     setCart(deleteProduct)
 }
-const deleteProduct=()=>setCart ([0]);
+
+const removeFromCart = (id) => {
+  const itemRemoved = cart.filter((item) => item.id !== id);
+  setCart(itemRemoved);
+}
+
+
+const deleteProduct=()=>setCart ([]);
 
 function totalPrice(){
   let total = 0;
@@ -63,6 +70,7 @@ function totalPrice(){
         totalPrice,
         isInCart,
         totalProdcuts,
+        removeFromCart
       }}
     >
       {children}

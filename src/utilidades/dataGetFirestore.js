@@ -1,5 +1,6 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, query, where, getDocs, getDoc, setDoc, doc, addDoc} from "firebase/firestore/lite"
+import { getFirestore, collection, query, where, getDocs, getDoc, setDoc, doc, addDoc, Timestamp} from "firebase/firestore/lite"
+import Checkout from "../Pages/Checkout";
 
 
 const firebaseConfig = {
@@ -60,6 +61,21 @@ export async function getDetailProduct(id) {
       id: fractaSt.id
   }
 
+}
 
+//Buyer Order
+export async function createBuyOrder(buyOrder){
+  const buyTimestamp = Timestamp.now();
 
+  const orderWithDate = {
+      ...buyOrder,
+      date: buyTimestamp
+  };
+
+  const inventario = collection(firestoreDB, "buyOrders");
+  const ordenDate = await addDoc(inventario, orderWithDate);
+
+  console.log("ID de Compra:", ordenDate.id)
+  console.log("Orden de Compra:", buyOrder);
+  
 }

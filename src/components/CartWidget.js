@@ -10,7 +10,7 @@ const CartWidget = () =>{
              {
             cart == 0 ?
             (
-           console.log('carrito')
+           console.log('carrito vacio')
             ) : 
             (
             <Link to={"Pages/CartPage"} >

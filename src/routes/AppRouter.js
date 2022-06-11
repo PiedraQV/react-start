@@ -6,6 +6,7 @@ import About from '../Pages/About'
 import CartPage from '../Pages/CartPage'
 import DetailPage from '../Pages/DetailPage';
 import CartContextProvider from '../components/CartContext'
+import Checkout from '../Pages/Checkout';
 
 function AppRouter (){
     return(
@@ -19,6 +20,7 @@ function AppRouter (){
             <Route path='/Pages/About' element={ <About/>}/>
             <Route path='/Pages/CartPage' element={ <CartPage/>}/>
             <Route path='/Pages/DetailPage/:productId' element={ <DetailPage/>}/>
+            <Route path='/Pages/Checkout' element={ <Checkout/>}/>
         </Routes>
         </BrowserRouter>
         </CartContextProvider>  

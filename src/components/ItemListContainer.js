@@ -32,7 +32,6 @@ const ItemListContainer = () => {
                <Loading></Loading>
                :
                <ItemList products = {products}/>}
-               {console.log(products)}
         </div>
     )
 };
